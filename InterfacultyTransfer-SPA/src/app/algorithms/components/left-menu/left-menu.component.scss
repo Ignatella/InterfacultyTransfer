@@ -1,0 +1,13 @@
+nz-card {
+  height: 100vh; //tmp
+
+  ::ng-deep .ant-card-body {
+    padding-left: 5px;
+  }
+}
+
+nz-card i {
+  vertical-align: 0;
+  height: 20px;
+}
+

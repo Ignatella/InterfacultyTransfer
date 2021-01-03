@@ -1,0 +1,40 @@
+<div class="mt-3">
+  <div class="container">
+    <h3 class="text-center text-primary mb-4 mt-3">Dlaczego ta strona?</h3>
+    <p>
+      Ta strona powstała w związku z silnym pragnieniem autora studiowania na <a href="http://www.iet.agh.edu.pl/pl/">
+      Wydziale Informatyki, Elektroniki i Telekomunikacji(WIET)</a>.
+    </p>
+    <nz-divider class="mt-5" nzText="Streszczenie" nzOrientation="left"></nz-divider>
+    <nz-table  [nzScroll]="{ x: '1000px'}" #nzTable [nzData]="algorithms" [nzPageSize]="5"
+              nzTableLayout="fixed" [nzWidthConfig]="['40%', '25%', '20%', '15%', '10%']">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Realization</th>
+        <th>Difficulty</th>
+        <th>Language</th>
+        <th>Link</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let algorithm of nzTable.data">
+        <td>{{ algorithm.name }}</td>
+        <td>{{algorithm?.realization}}</td>
+        <td>
+          <nz-tag
+            [nzColor]="
+            algorithm?.difficulty?.acceptability || 'blue'">
+            <div class="text-inside-tag">
+              <ng-katex [equation]="algorithm?.difficulty?.name || 'none'"></ng-katex>
+            </div>
+          </nz-tag>
+        </td>
+        <td>{{algorithm?.language}}</td>
+        <td><a href="{{algorithm.link}}">View</a>
+        </td>
+      </tr>
+      </tbody>
+    </nz-table>
+  </div>
+</div>

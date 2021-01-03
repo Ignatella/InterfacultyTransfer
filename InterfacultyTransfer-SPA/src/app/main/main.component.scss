@@ -1,0 +1,26 @@
+nz-card {
+  width: 100%;
+}
+
+div.container {
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 3px;
+}
+
+nz-tag {
+  width: 120px;
+}
+
+.text-inside-tag {
+  text-align: center;
+}
+
+nz-table {
+  ::ng-deep i.anticon {
+    svg {
+      vertical-align: 0;
+      padding-top: 1px !important;
+
+    }
+  }
+}
