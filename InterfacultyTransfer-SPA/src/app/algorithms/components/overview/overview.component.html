@@ -1,0 +1,80 @@
+<div>
+  <h2 class="text-center text-primary mt-4 mb-3">Overview</h2>
+  <div class="ml-3">
+    <p>Tutaj opisano ogólną strukturę tej aplikacji i aspekty, które ona obejmuje.</p>
+  </div>
+  <nz-divider class="mt-2 mb-4" nzText="Złożoność algorytmu" nzOrientation="left"></nz-divider>
+  <div class="ml-3">
+    <div class="row">
+      <div class="col-auto">
+        Dobrze:
+      </div>
+      <div class="col">
+        <nz-tag [nzColor]="'green'">
+          <ng-katex [equation]="'O(1)'"></ng-katex>
+        </nz-tag>
+        <nz-tag [nzColor]="'green'">
+          <ng-katex [equation]="'O(log N)'"></ng-katex>
+        </nz-tag>
+        <nz-tag [nzColor]="'green'">
+          <ng-katex [equation]="'O(\\sqrt{N})'"></ng-katex>
+        </nz-tag>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-auto">
+        Dopuszczalne:
+      </div>
+      <div class="col">
+        <nz-tag [nzColor]="'orange'">
+          <ng-katex [equation]="'O(N)'"></ng-katex>
+        </nz-tag>
+        <nz-tag [nzColor]="'orange'">
+          <ng-katex [equation]="'O(N * log N)'"></ng-katex>
+        </nz-tag>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-auto">
+        Źle (jeżeli istnieje inny):
+      </div>
+      <div class="col">
+        <nz-tag [nzColor]="'red'">
+          <ng-katex [equation]="'O(N^2)'"></ng-katex>
+        </nz-tag>
+        <nz-tag [nzColor]="'red'">
+          <ng-katex [equation]="'O(2^N)'"></ng-katex>
+        </nz-tag>
+        <nz-tag [nzColor]="'red'">
+          <ng-katex [equation]="'O(N!)'"></ng-katex>
+        </nz-tag>
+      </div>
+    </div>
+  </div>
+  <nz-divider class="mt-5" nzText="Struktura" nzOrientation="left"></nz-divider>
+  <div class="ml-3">
+    <p>Każdy umieszczony algorytm ma 2 pliki. Jeden plik "Description" zawiera krótkie informacje dotyczące
+      realizacji i postawionego problemu(1), natomiast drugi plik (2) zawiera kod źródłowy, który można natychmiastowo
+      uruchomić i sprawdzić. Kod
+      źródłowy tak samo może zawierać kilka plików (obrazek po prawej stronie).</p>
+
+    <div class="row">
+      <div class="col d-flex justify-content-center">
+        <nz-card nzHoverable style="width:400px; height: 250px" [nzCover]="str1">
+        </nz-card>
+      </div>
+      <div class="col d-flex justify-content-center">
+        <nz-card nzHoverable style="width:400px; height: 250px" [nzCover]="str2">
+        </nz-card>
+      </div>
+      <ng-template #str1>
+        <img alt="example" src="../../../../assets/structure-catalog.jpg"/>
+      </ng-template>
+      <ng-template #str2>
+        <img alt="example" src="../../../../assets/structure-editor.jpg"/>
+      </ng-template>
+    </div>
+  </div>
+</div>

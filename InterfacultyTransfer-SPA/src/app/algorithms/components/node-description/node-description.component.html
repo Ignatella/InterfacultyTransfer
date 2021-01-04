@@ -1,0 +1,18 @@
+<div *ngIf="algorithm">
+  <div class="ml-3 mb-3">
+    <h4 class="text-center text-primary mt-4 mb-2">{{algorithm.name}}</h4>
+    <div *ngIf="algorithm.difficulty">
+      <nz-tag [nzColor]="algorithm.difficulty.acceptability">
+        <ng-katex [equation]="'O(' + algorithm.difficulty.name + ')'"></ng-katex>
+      </nz-tag>
+    </div>
+  </div>
+  <div *ngIf="algorithm.task">
+    <nz-divider class="mt-2 mb-4" nzText="Treść zadania" nzOrientation="left"></nz-divider>
+    <div class="ml-3" [innerHTML]="algorithm.task"></div>
+  </div>
+  <div *ngIf="algorithm.realization">
+    <nz-divider class="mt-2 mb-4" nzText="Realizacja" nzOrientation="left"></nz-divider>
+    <div class="ml-3" [innerHTML]="algorithm.realization"></div>
+  </div>
+</div>

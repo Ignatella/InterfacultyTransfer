@@ -3,10 +3,12 @@
     <h3 class="text-center text-primary mb-4 mt-3">Dlaczego ta strona?</h3>
     <p>
       Ta strona powstała w związku z silnym pragnieniem autora studiowania na <a href="http://www.iet.agh.edu.pl/pl/">
-      Wydziale Informatyki, Elektroniki i Telekomunikacji(WIET)</a>.
+      Wydziale Informatyki, Elektroniki i Telekomunikacji(WIET)</a>. Stona zawiera algorytmy, które zainteresowały
+      autora i
+      i wydawały się odpowiednie do idei.
     </p>
     <nz-divider class="mt-5" nzText="Streszczenie" nzOrientation="left"></nz-divider>
-    <nz-table  [nzScroll]="{ x: '1000px'}" #nzTable [nzData]="algorithms" [nzPageSize]="5"
+    <nz-table [nzScroll]="{ x: '1000px'}" #nzTable [nzData]="algorithms" [nzPageSize]="5"
               nzTableLayout="fixed" [nzWidthConfig]="['40%', '25%', '20%', '15%', '10%']">
       <thead>
       <tr>
@@ -31,10 +33,10 @@
           </nz-tag>
         </td>
         <td>{{algorithm?.language}}</td>
-        <td><a href="{{algorithm.link}}">View</a>
-        </td>
+        <td><a (click)="algorithmSelected(algorithm)" [routerLink]="['algorithms', 'code']">View</a></td>
       </tr>
       </tbody>
     </nz-table>
   </div>
 </div>
+<!--[queryParams]="{'repl-link': algorithm.link}-->

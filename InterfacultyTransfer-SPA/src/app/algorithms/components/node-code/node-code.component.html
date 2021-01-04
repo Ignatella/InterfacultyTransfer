@@ -1,0 +1,4 @@
+<iframe *ngIf="link != null" class="e2e-iframe-trusted-src" height="1100px" width="100%"
+        [src]="link | safe: 'resourceUrl'" scrolling="no"
+        frameborder="no" allowtransparency="true" allowfullscreen="true"
+        sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>

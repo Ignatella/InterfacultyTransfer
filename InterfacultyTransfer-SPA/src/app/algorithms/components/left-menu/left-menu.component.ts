@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {NzFormatEmitEvent, NzTreeNode} from 'ng-zorro-antd/tree';
+import {NzFormatEmitEvent, NzTreeNode, NzTreeNodeOptions} from 'ng-zorro-antd/tree';
+import {AlgorithmService} from '../../../core/algorithm.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-left-menu',
@@ -7,148 +9,193 @@ import {NzFormatEmitEvent, NzTreeNode} from 'ng-zorro-antd/tree';
   styleUrls: ['./left-menu.component.scss']
 })
 export class LeftMenuComponent implements OnInit {
-  activatedNode?: NzTreeNode;
-  nodes = [
+  activatedNode?: NzTreeNodeOptions;
+  lookingFor = 'Code';
+
+  nodes: NzTreeNodeOptions[] = [
     {
       title: 'Overview',
-      isLeaf: true
+      isLeaf: true,
+      key: '0000'
     },
     {
       title: 'Red Black Tree',
-      key: 1,
+      key: 'Red Black Tree',
       expanded: false,
+      selectable: false,
       children: [
-        {title: 'leaf 0-0', key: '10', isLeaf: true},
-        {title: 'leaf 0-1', key: '101', isLeaf: true}
+        {title: 'Description', key: 'Red Black Tree Description', isLeaf: true},
+        {title: 'Code', key: 'Red Black Tree Code', isLeaf: true}
+      ]
+    },
+    {
+      title: 'Binary Search Tree',
+      key: 'Binary Search Tree',
+      expanded: false,
+      selectable: false,
+      children: [
+        {title: 'Description', key: 'Binary Search Tree Description', isLeaf: true},
+        {title: 'Code', key: 'Binary Search Tree Code', isLeaf: true}
       ]
     },
     {
       title: 'Eight Queens puzzle',
-      key: 2,
+      key: 'Eight Queens puzzle',
       expanded: false,
+      selectable: false,
       children: [
-        {title: 'leaf 1-0', key: '20', isLeaf: true},
-        {title: 'leaf 1-1', key: '21', isLeaf: true}
+        {title: 'Description', key: 'Eight Queens puzzle Description', isLeaf: true},
+        {title: 'Code', key: 'Eight Queens puzzle Code', isLeaf: true}
       ]
     },
     {
       title: 'Knights Tour puzzle',
-      key: 3,
+      key: 'Knights Tour puzzle',
       expanded: false,
+      selectable: false,
       children: [
-        {title: 'leaf 1-0', key: '30', isLeaf: true},
-        {title: 'leaf 1-1', key: '31', isLeaf: true}
+        {title: 'Description', key: 'Knights Tour puzzle Description', isLeaf: true},
+        {title: 'Code', key: 'Knights Tour puzzle Code', isLeaf: true}
       ]
     },
     {
       title: 'Tower of Hanoi puzzle',
-      key: 4,
+      key: 'Tower of Hanoi puzzle',
       expanded: false,
+      selectable: false,
       children: [
-        {title: 'leaf 1-0', key: '40', isLeaf: true},
-        {title: 'leaf 1-1', key: '41', isLeaf: true}
+        {title: 'Description', key: 'Tower of Hanoi puzzle Description', isLeaf: true},
+        {title: 'Code', key: 'Tower of Hanoi puzzle Code', isLeaf: true}
       ]
     },
     {
       title: 'Mag-Mino longest chain',
-      key: 5,
+      key: 'Mag-Mino longest chain',
       expanded: false,
+      selectable: false,
       children: [
-        {title: 'leaf 1-0', key: '50', isLeaf: true},
-        {title: 'leaf 1-1', key: '51', isLeaf: true}
+        {title: 'Description', key: 'Mag-Mino longest chain Description', isLeaf: true},
+        {title: 'Code', key: 'Mag-Mino longest chain Code', isLeaf: true}
       ]
     },
     {
       title: 'Mag-Mino sorting(linked list)',
-      key: 6,
+      key: 'Mag-Mino sorting(linked list)',
       expanded: false,
+      selectable: false,
       children: [
-        {title: 'leaf 1-0', key: '60', isLeaf: true},
-        {title: 'leaf 1-1', key: '61', isLeaf: true}
-      ]
-    },
-    {
-      title: 'Remove 2 castles from chessboard',
-      key: 7,
-      expanded: false,
-      children: [
-        {title: 'leaf 1-0', key: '70', isLeaf: true},
-        {title: 'leaf 1-1', key: '71', isLeaf: true}
+        {title: 'Description', key: 'Mag-Mino sorting(linked list) Description', isLeaf: true},
+        {title: 'Code', key: 'Mag-Mino sorting(linked list) Code', isLeaf: true}
       ]
     },
     {
       title: 'B-Search multidimensional',
-      key: 8,
+      key: 'B-Search multidimensional',
       expanded: false,
+      selectable: false,
       children: [
-        {title: 'leaf 1-0', key: '80', isLeaf: true},
-        {title: 'leaf 1-1', key: '81', isLeaf: true}
+        {title: 'Description', key: 'B-Search multidimensional Description', isLeaf: true},
+        {title: 'Code', key: 'B-Search multidimensional Code', isLeaf: true}
       ]
     },
     {
       title: 'Insert in sorted singly linked list',
-      key: 9,
+      key: 'Insert in sorted singly linked list',
       expanded: false,
+      selectable: false,
       children: [
-        {title: 'leaf 1-0', key: '90', isLeaf: true},
-        {title: 'leaf 1-1', key: '91', isLeaf: true}
+        {title: 'Description', key: 'Insert in sorted singly linked list Description', isLeaf: true},
+        {title: 'Code', key: 'Insert in sorted singly linked list Code', isLeaf: true}
       ]
     },
     {
       title: 'Remove 2 castles from chessboard',
-      key: 10,
+      key: 'Remove 2 castles from chessboard',
       expanded: false,
+      selectable: false,
       children: [
-        {title: 'leaf 1-0', key: '100', isLeaf: true},
-        {title: 'leaf 1-1', key: '101', isLeaf: true}
+        {title: 'Description', key: 'Remove 2 castles from chessboard Description', isLeaf: true},
+        {title: 'Code', key: 'Remove 2 castles from chessboard Code', isLeaf: true}
       ]
     },
     {
       title: 'Path from num to num',
-      key: 11,
+      key: 'Path from num to num',
       expanded: false,
+      selectable: false,
       children: [
-        {title: 'leaf 1-0', key: '110', isLeaf: true},
-        {title: 'leaf 1-1', key: '111', isLeaf: true}
+        {title: 'Description', key: 'Path from num to num Description', isLeaf: true},
+        {title: 'Code', key: 'Path from num to num Code', isLeaf: true}
       ]
     },
     {
       title: 'Square Coincidence',
-      key: 12,
+      key: 'Square Coincidence',
       expanded: false,
+      selectable: false,
       children: [
-        {title: 'leaf 1-0', key: '120', isLeaf: true},
-        {title: 'leaf 1-1', key: '121', isLeaf: true}
+        {title: 'Description', key: 'Square Coincidence Description', isLeaf: true},
+        {title: 'Code', key: 'Square Coincidence Code', isLeaf: true}
       ]
     },
     {
       title: 'Longest Chain',
-      key: 13,
+      key: 'Longest Chain',
       expanded: false,
+      selectable: false,
       children: [
-        {title: 'leaf 1-0', key: '130', isLeaf: true},
-        {title: 'leaf 1-1', key: '131', isLeaf: true}
+        {title: 'Description', key: 'Longest Chain Description', isLeaf: true},
+        {title: 'Code', key: 'Longest Chain Code', isLeaf: true}
       ]
     },
     {
       title: 'Longest Core Nums Multiplication',
-      key: 14,
+      key: 'Longest Core Nums Multiplication',
       expanded: false,
+      selectable: false,
       children: [
-        {title: 'leaf 1-0', key: '140', isLeaf: true},
-        {title: 'leaf 1-1', key: '141', isLeaf: true}
+        {title: 'Description', key: 'Longest Core Nums Multiplication Description', isLeaf: true},
+        {title: 'Code', key: 'Longest Core Nums Multiplication Code', isLeaf: true}
       ]
     }
   ];
 
-  constructor() {
+  constructor(private algorithmService: AlgorithmService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
+    this.algorithmService.currentAlgorithm.subscribe(algorithm => {
+      if (algorithm === null) {
+        return;
+      }
+
+      this.nodes.forEach((node) => {
+        if (node.key === algorithm.id) {
+          node.expanded = true;
+          node.children?.forEach(childNode => {
+            if (childNode.title === this.lookingFor) {
+              this.activatedNode = childNode;
+              this.activatedNode.selected = true;
+            }
+          });
+        }
+      });
+    });
+
+    if (!this.activatedNode) {
+      const overview = this.nodes.find(node => {
+        return node.title === 'Overview';
+      });
+
+      if (overview) {
+        overview.selected = true;
+        this.router.navigate(['algorithms', 'overview']);
+      }
+    }
   }
 
   openFolder(data: NzTreeNode | NzFormatEmitEvent): void {
-    // do something if u want
     if (data instanceof NzTreeNode) {
       data.isExpanded = !data.isExpanded;
     } else {
@@ -160,10 +207,38 @@ export class LeftMenuComponent implements OnInit {
   }
 
   activeNode(data: NzFormatEmitEvent): void {
-    this.activatedNode = data.node!;
-  }
+    if (!data.node?.isSelectable) {
+      return;
+    }
 
-  selectDropdown(): void {
-    // do something
+    if (this.activatedNode) {
+      this.activatedNode.selected = false;
+    }
+
+    this.nodes.forEach(node => {
+      if (data.node?.title !== 'Overview') {
+        node.selected = false;
+      }
+      node.children?.forEach(childNode => {
+        childNode.selected = false;
+      });
+      this.nodes = [...this.nodes];
+    });
+
+    if (data.node) {
+      this.lookingFor = data.node.title;
+      const lastIndex = data.node.key.lastIndexOf(' ');
+      this.algorithmService.updateCurrentAlgorithm(data.node.key.substring(0, lastIndex));
+      let component = '';
+      switch (data.node.title) {
+        case 'Code':
+          component = 'code';
+          break;
+        case 'Description':
+          component = 'description';
+          break;
+      }
+      this.router.navigate(['algorithms', component]);
+    }
   }
 }

@@ -1,13 +1,15 @@
-<nz-card>
-  <h3 class="text-center text-primary mb-3">Algorithms</h3>
-  <nz-tree
-    nzBlockNode
-    [nzData]="nodes"
-    (nzClick)="activeNode($event)"
-    (nzDblClick)="openFolder($event)"
-    [nzTreeTemplate]="nzTreeTemplate"
-  ></nz-tree>
-  <ng-template #nzTreeTemplate let-node let-origin="origin">
+<div nz-menu nzMode="vertical" class="menu ml-0">
+
+  <nz-card>
+    <h3 class="text-center text-primary mb-3">Algorithms</h3>
+    <nz-tree
+      nzBlockNode
+      [nzData]="nodes"
+      (nzClick)="activeNode($event)"
+      (nzDblClick)="openFolder($event)"
+      [nzTreeTemplate]="nzTreeTemplate"
+    ></nz-tree>
+    <ng-template #nzTreeTemplate let-node let-origin="origin">
       <span class="custom-node">
         <span *ngIf="!node.isLeaf">
           <i class="mr-1" nz-icon [nzType]="node.isExpanded ? 'folder-open' : 'folder'" (click)="openFolder(node)"></i>
@@ -18,5 +20,6 @@
           <span class="file-name">{{ node.title }}</span>
         </span>
       </span>
-  </ng-template>
-</nz-card>
+    </ng-template>
+  </nz-card>
+</div>
