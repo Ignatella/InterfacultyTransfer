@@ -31,4 +31,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  collapseRequested($event: any): void {
+    this.isCollapsed = true;
+  }
 }
