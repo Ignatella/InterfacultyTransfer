@@ -2,13 +2,13 @@
   <div class="container">
     <div class="navbar-brand-wrapper">
       <img class="navbar-brand" id="logo" src="../../../../assets/logo.png" alt="Logo">
+      <i class="fa fa-paper-plane-o navbar-brand" id="small_logo" aria-hidden="true"></i>
     </div>
     <div class="navbar-nav mr-auto">
-      <a class="nav-item nav-link" [routerLink]="['']">Główna</a>
-      <a class="nav-item nav-link" [routerLink]="['/algorithms']">Algorytmy</a>
+      <div class="row">
+        <a class="nav-item nav-link ml-3" [routerLink]="['']">Główna</a>
+        <a class="nav-item nav-link ml-md-2 ml-4" [routerLink]="['/algorithms']">Algorytmy</a>
+      </div>
     </div>
   </div>
 </nav>
-
-
-

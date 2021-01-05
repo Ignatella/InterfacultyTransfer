@@ -16,7 +16,7 @@
         <th>Realization</th>
         <th>Difficulty</th>
         <th>Language</th>
-        <th>Link</th>
+        <th nzRight>Link</th>
       </tr>
       </thead>
       <tbody>
@@ -33,10 +33,9 @@
           </nz-tag>
         </td>
         <td>{{algorithm?.language}}</td>
-        <td><a (click)="algorithmSelected(algorithm)" [routerLink]="['algorithms', 'code']">View</a></td>
+        <td nzRight><a (click)="algorithmSelected(algorithm)" [routerLink]="['algorithms', 'code']">View</a></td>
       </tr>
       </tbody>
     </nz-table>
   </div>
 </div>
-<!--[queryParams]="{'repl-link': algorithm.link}-->
