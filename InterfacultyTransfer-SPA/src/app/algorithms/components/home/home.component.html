@@ -12,7 +12,7 @@
          [ngClass]="{'scroll-visible': isScrollInvisible}"
          (mouseenter)="isScrollInvisible = false"
          (mouseleave)="isScrollInvisible = true">
-      <app-left-menu></app-left-menu>
+      <app-left-menu  (collapsed)="collapseRequested($event)"></app-left-menu>
     </div>
     <div class="menu-hide-icon" [ngClass]="{'collapsed': isCollapsed}">
       <i class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'" (click)="isCollapsed = !isCollapsed"></i>

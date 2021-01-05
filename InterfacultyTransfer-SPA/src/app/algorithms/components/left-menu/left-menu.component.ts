@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {NzFormatEmitEvent, NzTreeNode, NzTreeNodeOptions} from 'ng-zorro-antd/tree';
 import {AlgorithmService} from '../../../core/algorithm.service';
 import {Router} from '@angular/router';
@@ -11,6 +11,7 @@ import {Router} from '@angular/router';
 export class LeftMenuComponent implements OnInit {
   activatedNode?: NzTreeNodeOptions;
   lookingFor = 'Code';
+  @Output() collapsed  = new EventEmitter<boolean>();
 
   nodes: NzTreeNodeOptions[] = [
     {
@@ -207,7 +208,8 @@ export class LeftMenuComponent implements OnInit {
   }
 
   activeNode(data: NzFormatEmitEvent): void {
-    if (!data.node?.isSelectable) {
+    if (data.node && !data.node?.isSelectable) {
+      data.node.isExpanded = !data.node?.isExpanded;
       return;
     }
 
@@ -238,6 +240,7 @@ export class LeftMenuComponent implements OnInit {
           component = 'description';
           break;
       }
+      this.collapsed.emit(true);
       this.router.navigate(['algorithms', component]);
     }
   }
