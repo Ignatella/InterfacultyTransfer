@@ -6,3 +6,20 @@
 #logo {
   max-height: 50px;
 }
+
+#small_logo {
+  font-size: 40px;
+  color: white;
+}
+
+@media (max-width: 767px) {
+  #logo {
+    display: none;
+  }
+}
+
+@media (min-width: 767px) {
+  #small_logo {
+    display: none;
+  }
+}
