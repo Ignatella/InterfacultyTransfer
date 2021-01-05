@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AlgorithmService} from '../../../core/algorithm.service';
 import {Algorithm} from '../../../shared/models/algorithm';
+import {MarkdownService} from 'ngx-markdown';
 
 @Component({
   selector: 'app-node-description',
@@ -10,7 +11,7 @@ import {Algorithm} from '../../../shared/models/algorithm';
 export class NodeDescriptionComponent implements OnInit {
   algorithm: Algorithm | null = null;
 
-  constructor(private algorithmService: AlgorithmService) {
+  constructor(private algorithmService: AlgorithmService, private markdownService: MarkdownService) {
   }
 
   ngOnInit(): void {
@@ -19,5 +20,11 @@ export class NodeDescriptionComponent implements OnInit {
         this.algorithm = a;
       }
     });
+  }
+
+  goToGithub(): void {
+    if (this.algorithm?.githubLink) {
+      document.location.href = this.algorithm.githubLink;
+    }
   }
 }

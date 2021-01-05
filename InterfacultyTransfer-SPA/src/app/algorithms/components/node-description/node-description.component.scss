@@ -1,0 +1,15 @@
+nz-card {
+  ::ng-deep .ant-card-body {
+    display: none;
+  }
+}
+
+.github-col {
+  margin-left: -20px;
+  cursor: pointer;
+  padding-right: 0;
+}
+
+//.description-wrapper {
+//  max-width: 100vw;
+//}

@@ -17,6 +17,8 @@ import {NodeDescriptionComponent} from './components/node-description/node-descr
 import {NzDividerModule} from 'ng-zorro-antd/divider';
 import {NzTagModule} from 'ng-zorro-antd/tag';
 import {KatexModule} from 'ng-katex';
+import {NzStepsModule} from 'ng-zorro-antd/steps';
+import {MarkdownModule} from 'ngx-markdown';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import {KatexModule} from 'ng-katex';
     SharedModule,
     NzDividerModule,
     NzTagModule,
-    KatexModule
+    KatexModule,
+    NzStepsModule,
+    MarkdownModule.forChild(),
   ]
 })
 export class AlgorithmsModule {

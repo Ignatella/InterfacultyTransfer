@@ -1,18 +1,34 @@
-<div *ngIf="algorithm">
-  <div class="ml-3 mb-3">
-    <h4 class="text-center text-primary mt-4 mb-2">{{algorithm.name}}</h4>
+<div class="description-wrapper" *ngIf="algorithm">
+  <div class="mb-3">
+    <h3 class="text-center text-primary mt-4 mb-2">{{algorithm.name}}</h3>
     <div *ngIf="algorithm.difficulty">
-      <nz-tag [nzColor]="algorithm.difficulty.acceptability">
-        <ng-katex [equation]="'O(' + algorithm.difficulty.name + ')'"></ng-katex>
-      </nz-tag>
+      <div class="row col-12">
+        <div class="col-auto">
+          <nz-tag [nzColor]="algorithm.difficulty.acceptability">
+            <ng-katex [equation]="'O(' + algorithm.difficulty.name + ')'"></ng-katex>
+          </nz-tag>
+        </div>
+        <div *ngIf="algorithm.githubLink" class="col pr-0 mw-50 github-col">
+          <nz-tag nzColor="#586069" (click)="goToGithub()">
+            <i class="fa fa-github" aria-hidden="true"></i>
+            <span> GitHub</span>
+          </nz-tag>
+        </div>
+      </div>
     </div>
   </div>
-  <div *ngIf="algorithm.task">
-    <nz-divider class="mt-2 mb-4" nzText="Treść zadania" nzOrientation="left"></nz-divider>
-    <div class="ml-3" [innerHTML]="algorithm.task"></div>
-  </div>
-  <div *ngIf="algorithm.realization">
-    <nz-divider class="mt-2 mb-4" nzText="Realizacja" nzOrientation="left"></nz-divider>
-    <div class="ml-3" [innerHTML]="algorithm.realization"></div>
+  <div>
+    <div *ngIf="algorithm.taskLink">
+      <nz-divider class="mt-2 mb-4" nzText="Task" nzOrientation="left"></nz-divider>
+      <div class="mx-3">
+        <markdown [src]="algorithm.taskLink" lineHighlight emoji></markdown>
+      </div>
+    </div>
+    <div *ngIf="algorithm.realizationLink">
+      <nz-divider class="mt-2 mb-4" nzText="Realization" nzOrientation="left"></nz-divider>
+      <div class="mx-3">
+        <markdown [src]="algorithm.realizationLink" lineHighlight emoji></markdown>
+      </div>
+    </div>
   </div>
 </div>
