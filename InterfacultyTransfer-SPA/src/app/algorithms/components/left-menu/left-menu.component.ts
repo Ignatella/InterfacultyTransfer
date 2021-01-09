@@ -1,4 +1,4 @@
-import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, OnDestroy} from '@angular/core';
 import {NzFormatEmitEvent, NzTreeNode, NzTreeNodeOptions} from 'ng-zorro-antd/tree';
 import {AlgorithmService} from '../../../core/algorithm.service';
 import {Router} from '@angular/router';
@@ -8,10 +8,10 @@ import {Router} from '@angular/router';
   templateUrl: './left-menu.component.html',
   styleUrls: ['./left-menu.component.scss']
 })
-export class LeftMenuComponent implements OnInit {
+export class LeftMenuComponent implements OnInit, OnDestroy {
   activatedNode?: NzTreeNodeOptions;
   lookingFor = 'Code';
-  @Output() collapsed  = new EventEmitter<boolean>();
+  @Output() collapsed = new EventEmitter<boolean>();
 
   nodes: NzTreeNodeOptions[] = [
     {
@@ -243,5 +243,9 @@ export class LeftMenuComponent implements OnInit {
       this.collapsed.emit(true);
       this.router.navigate(['algorithms', component]);
     }
+  }
+
+  ngOnDestroy(): void {
+    this.algorithmService.resetCurrentAlgorithm();
   }
 }

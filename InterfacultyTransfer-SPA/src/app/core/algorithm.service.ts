@@ -198,6 +198,10 @@ export class AlgorithmService {
     });
   }
 
+  resetCurrentAlgorithm(): void {
+    this.currentAlgorithm.next(null);
+  }
+
   constructor() {
   }
 }
