@@ -32,6 +32,8 @@ export class HomeComponent implements OnInit {
   }
 
   collapseRequested($event: any): void {
-    this.isCollapsed = true;
+    if (window.outerWidth < 992) {
+      this.isCollapsed = true;
+    }
   }
 }
