@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
 import {Algorithm} from '../shared/models/algorithm';
 import {Acceptability} from '../shared/models/acceptability';
-import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'

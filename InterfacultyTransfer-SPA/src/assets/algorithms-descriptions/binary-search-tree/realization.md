@@ -33,4 +33,4 @@ How number of _ is being calculated:
 09    11    16    18    34    36    44    46    54    56    69    71    79    81    94    99   
 ```
 
-![solution](../../../../assets/algorithms-descriptions/binary-search-tree/assets/solution.jpg)
+![solution](assets/algorithms-descriptions/binary-search-tree/assets/solution.jpg)

@@ -18,4 +18,4 @@ było zgodnych piątkowo.
 >sprawdzanym obszarze musi znaleźć się co najmniej jeden
 >element.
 
-![example](../../../../assets/algorithms-descriptions/square-coincidence/assets/example.jpg)
+![example](assets/algorithms-descriptions/square-coincidence/assets/example.jpg)
